@@ -92,15 +92,22 @@ The entire environment is containerized using Docker and Docker Compose to ensur
 
 ```bash
 docker-compose up -d
-2. Run the pipeline
-python src/pipeline.py
-Running Tests
-pytest
-CI/CD
+```
 
+### 2. Run the pipeline
+```bash
+python src/pipeline.py
+```
+
+### Running Tests
+```bash
+pytest
+```
+
+### CI/CD
 The repository includes an Azure Pipelines configuration that automatically runs tests when changes are pushed to the repository.
 
-Design Decisions
+### Design Decisions
 
 Modular architecture separating extraction, transformation, and loading logic
 
@@ -112,4 +119,5 @@ Retry patterns to improve resiliency
 
 Containerized infrastructure for reproducibility
 
-Author
+## Author
+Andrés Agudelo

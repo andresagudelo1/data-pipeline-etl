@@ -26,7 +26,7 @@ PostgreSQL Target
 
 The project structure separates responsibilities clearly:
 
-
+## Project Structure
 src/
 │
 ├── db

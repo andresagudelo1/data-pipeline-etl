@@ -22,11 +22,52 @@ Batch Processing (Chunking)
 ↓  
 Concurrent Loading  
 ↓  
-PostgreSQL Target  
+PostgreSQL Target
 
-The project structure separates responsibilities clearly:
+## Pipeline Workflow
+
+```mermaid
+flowchart TD
+
+A[Start Pipeline] --> B[Extract Incremental Data]
+
+B --> C[Validate Schema]
+
+C --> D[Split into Chunks]
+
+D --> E[ThreadPoolExecutor]
+
+E --> F[Load Chunk]
+
+F --> G[Retry with Exponential Backoff]
+
+G --> H[Write to PostgreSQL]
+
+H --> I[End Pipeline]
+```
+
+## Architecture Diagram
+
+```mermaid
+flowchart LR
+
+A[Source Database<br>MSSQL / Oracle] --> B[Python ETL Pipeline]
+
+B --> C[Incremental Extraction]
+C --> D[Schema Validation]
+
+D --> E[Chunk Processing]
+
+E --> F[Concurrent Loading]
+
+F --> G[(PostgreSQL Target)]
+
+G --> H[Power BI / Analytics]
+```
 
 ## Project Structure
+
+The project structure separates responsibilities clearly:
 ```
 src/
 │

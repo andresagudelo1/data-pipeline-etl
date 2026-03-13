@@ -8,22 +8,6 @@ The pipeline focuses on **performance, reliability, and clean architecture**, fo
 
 ---
 
-## Architecture
-
-The pipeline follows a modular ETL architecture:
-
-Source Database  
-↓  
-Incremental Extraction  
-↓  
-Validation & Transformation  
-↓  
-Batch Processing (Chunking)  
-↓  
-Concurrent Loading  
-↓  
-PostgreSQL Target
-
 ## Pipeline Workflow
 
 ```mermaid
@@ -45,6 +29,10 @@ G --> H[Write to PostgreSQL]
 
 H --> I[End Pipeline]
 ```
+
+## Architecture
+
+The pipeline follows a modular ETL architecture:
 
 ## Architecture Diagram
 

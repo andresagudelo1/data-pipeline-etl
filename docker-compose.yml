@@ -1,0 +1,21 @@
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: finance
+    ports:
+      - "5432:5432"
+
+  pipeline:
+    build: .
+    container_name: data_pipeline
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - postgres
